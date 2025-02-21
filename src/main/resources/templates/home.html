@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Manager - Home</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
+    </head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
+    <div id="content">
+       
+        <section class="bg-gradient-to-r from-indigo-500 to-blue-600 dark:from-gray-700 dark:to-gray-800 text-black dark:text-white py-20 pb-48">
+            <div class="container mx-auto text-center px-4">
+                <h1 class="text-4xl font-bold mb-4 text-black">Manage Your Contacts Easily</h1>
+                <p class="text-lg mb-6 dark:text-black">An efficient and secure way to organize and manage all your important contacts in one place.</p>
+                <a href="#"
+                    class="bg-gray-400 dark:bg-gray-800 text-indigo-600 dark:text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                    Get Started
+                </a>
+            </div>
+        </section>
+        
+        <section class="flex justify-center mt-32 py-16 px-4">
+            <div class="container grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Card Component from Flowbite -->
+                <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                    <div class="mb-4">
+                        <i class="fas fa-user-plus text-blue-500 dark:text-blue-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Add New Contacts</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Quickly add new contacts with essential details for easy access and management.</p>
+                </div>
+                <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                    <div class="mb-4">
+                        <i class="fas fa-list-alt text-green-500 dark:text-green-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Organize and Categorize</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Categorize your contacts by groups to easily find who you're looking for.</p>
+                </div>
+                <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                    <div class="mb-4">
+                        <i class="fas fa-lock text-yellow-500 dark:text-yellow-400 text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Secure and Private</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Keep your contacts secure with end-to-end encryption and user authentication.</p>
+                </div>
+            </div>
+        </section>
+        
+            
+        
+    </div>
+    <script>
+        console.log("Home Page...")
+    </script>
+</body>
+</html>

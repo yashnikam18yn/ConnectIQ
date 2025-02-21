@@ -1,0 +1,5 @@
+ /* src/main/resources/static/css */
+ /* npx tailwindcss -i src/main/resurces/static/css/input.css -o src/main/resurces/static/css/output.css  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title>Service Page</title>
+</head>
+<body>
+<div id="content">
+
+    <!-- Services Page -->
+    <section class="bg-gradient-to-r from-indigo-500 to-blue-600 dark:from-gray-700 dark:to-gray-800 text-black dark:text-white py-20 pb-48">
+        <div class="container mx-auto text-center px-4">
+            <h1 class="text-4xl font-bold mb-4 text-black">Our Services</h1>
+            <p class="text-lg mb-6 dark:text-black">Discover the range of services we offer to make managing your contacts seamless and efficient.</p>
+            <a href="#features"
+               class="bg-gray-400 dark:bg-gray-800 text-indigo-600 dark:text-white font-semibold py-2 px-6 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+                Explore Features
+            </a>
+        </div>
+    </section>
+
+
+    <section class="flex justify-center mt-32 py-16 px-4">
+        <div class="container grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Card Component for Services -->
+            <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                <div class="mb-4">
+                    <i class="fas fa-cogs text-blue-500 dark:text-blue-400 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Custom Contact Solutions</h3>
+                <p class="text-gray-600 dark:text-gray-400">We provide tailored solutions to suit your unique contact management needs, ensuring efficiency and ease of use.</p>
+            </div>
+            <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                <div class="mb-4">
+                    <i class="fas fa-cloud text-teal-500 dark:text-teal-400 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Cloud Integration</h3>
+                <p class="text-gray-600 dark:text-gray-400">Seamlessly sync your contacts with cloud services for secure storage and accessibility anytime, anywhere.</p>
+            </div>
+            <div class="max-w-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 text-center mx-auto">
+                <div class="mb-4">
+                    <i class="fas fa-shield-alt text-red-500 dark:text-red-400 text-4xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Data Security</h3>
+                <p class="text-gray-600 dark:text-gray-400">Our services prioritize the security and privacy of your data, employing the latest in encryption technology.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+<script>
+        console.log("Service Page...")
+    </script>
+</body>
+</html>

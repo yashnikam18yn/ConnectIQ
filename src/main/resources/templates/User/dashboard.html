@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+    <title data-th-text="${loggedUser.name}">DashBoard Page</title>
+</head>
+<body>
+
+    <div id="content">
+
+        <!-- sidebar -->
+        <div th:if="${loggedUser}">
+            <div data-th-replace="~{user/sidebar::sidebar}"></div>
+         </div>
+
+    <div  style="height: 1000px; padding-left: 17rem; padding-top: 5rem; justify-content: center;">
+        <h3> Wel-come to DashBoard Page </h3>
+    </div>
+
+
+</div>
+    <script>
+        console.log("Dashboard Page...")
+    </script>
+</body>
+</html>

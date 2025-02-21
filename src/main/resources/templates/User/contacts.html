@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+    <title data-th-text="${loggedUser.name}">Contacts Page</title>
+</head>
+
+<body>
+
+    <div id="content">
+
+        <!-- sidebar -->
+        <div th:if="${loggedUser}">
+            <div data-th-replace="~{user/sidebar::sidebar}"></div>
+        </div>
+
+        <div style="height: 1000px; padding-left: 17rem; padding-top: 5rem; justify-content: center;">
+            <!-- <h3> Wel-come to Contacts Page </h3> -->
+
+            <div class="contacts_container">
+
+
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <div class="justify-between">
+                        <form action="">
+                            <div
+                                class="flex space-x-3 items-center justify-start flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+
+
+                                <!-- select box -->
+                                <div>
+
+                                    <select id="countries_disabled"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected>Select Field</option>
+                                        <option value="US">Name</option>
+                                        <option value="CA">Email</option>
+                                        <option value="FR">Contact Number</option>
+                                        <option value="DE">Address</option>
+                                    </select>
+                                </div>
+
+                                <label for="table-search" class="sr-only">Search</label>
+                                <div class="relative">
+                                    <div
+                                        class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="table-search-users"
+                                        class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Search for users">
+                                </div>
+                                <button class="px-3 py-2 bg-gray-800 text-white rounded">Search</button>
+
+                                <!-- Export File btn -->
+                                <button onclick="exportData()" type="button"
+                                    class="px-3 py-2 bg-green-800 text-white rounded">Export <i
+                                        class="fa-solid fa-file-export"></i></button>
+
+                            </div>
+                        </form>
+                    </div>
+                    <table id="contact-table" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="p-4">
+                                    <div class="flex items-center">
+                                        <!-- <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> -->
+                                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="px-6 py-3">
+                                    Name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Contact Number
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Address
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Web-Site Link
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-th-each="contact: ${contacts}"
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="w-4 p-4">
+
+                                </td>
+                                <th scope="row"
+                                    class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <img onerror="this.src='https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png'"
+                                        class="w-10 h-10 rounded-full" th:src="@{${contact.picture}}"
+                                        src="/docs/images/people/profile-picture-1.jpg" alt="Jese image">
+                                    <div class="ps-3">
+                                        <div class="text-base font-semibold" th:text="${contact.name}">Neil Sims</div>
+                                        <div class="font-normal text-gray-500" th:text="${contact.email}">
+                                            neil.sims@flowbite.com</div>
+                                    </div>
+                                </th>
+
+                                <td class="px-6 py-4">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span th:text="${contact.mobileNumber}"></span>
+                                </td>
+                                <td th:text="${contact.address}" class="px-6 py-4">
+                                    React Developer
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center">
+                                        <a th:href="@{${contact.webSiteLink}}" target="_blank"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><i
+                                                class="fa-solid fa-link"></i></a>
+                                    </div>
+                                </td>
+
+                                <!-- edit btn -->
+                                <td class="px-6 py-4">
+                                    <a data-th-href="@{'/user/contacts/update/'+*{contact.id}}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                        style="margin-right: 40px;">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    <!-- delete btn -->
+                                    <a data-th-href="@{'/user/contacts/delete/'+*{contact.id}}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                        style="margin-right: 40px;">
+
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+
+                                    <span data-th-if="*{contact.favorite}">
+                                        <i class="fa-solid fa-heart"></i>
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <!-- pagiganation component -->
+                    <div class="pagiganation_container p-5 text-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="flex items-center -space-x-px h-10 text-base">
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Previous</span>
+                                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="M5 1 1 5l4 4" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-current="page"
+                                        class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                                        <span class="sr-only">Next</span>
+                                        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@linways/table-to-excel@1.0.4/dist/tableToExcel.min.js"></script>
+    <script>
+        
+    function exportData(){
+    TableToExcel.convert(document.getElementById("contact-table"), {
+    name: "contacts.xlsx",
+    sheet: {
+    name: "Sheet 1"
+    }
+    });
+    }
+    </script>
+</body>
+
+</html>
